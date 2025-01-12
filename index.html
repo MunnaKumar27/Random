@@ -33,8 +33,7 @@
             margin: 20px 0;
             text-align: left;
             width: 90%;
-            font-family: 'Courier New', Courier, monospace;
-            font-family: cursive;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
         
         .heart {
@@ -84,7 +83,7 @@
 </head>
 
 <body>
-    <img src="https://cdn.pixabay.com/photo/2018/08/03/04/36/couple-3581038_640.jpg" alt="Love Icon" />
+    <!-- <img src="https://cdn.pixabay.com/photo/2018/08/03/04/36/couple-3581038_640.jpg" alt="Love Icon" /> -->
     <div id="message">She: Why do you love me?</div>
     <button id="startButton">Click to see all the reasons ❤️</button>
     <div id="container"></div>
@@ -220,7 +219,7 @@
                 heart.style.color = colors[index % colors.length]; // Cycle through heart colors
                 heart.innerHTML = `❤️`;
 
-                line.innerHTML = `${index + 1}. ${reason}`;
+                line.innerHTML = `${ index + 1}. ${reason}`;
                 line.appendChild(heart);
                 container.appendChild(line);
                 delay += .5; // Add delay for each message
