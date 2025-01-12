@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,22 +15,32 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
-            overflow: hidden;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
+        
         #message {
             font-size: 1.5rem;
             margin-top: 20px;
             text-align: center;
+            font-family: 'Courier New', Courier, monospace;
         }
+        
         .line {
             display: none;
-            margin: 10px 0;
+            margin: 20px 0;
+            text-align: left;
+            width: 90%;
+            font-family: 'Courier New', Courier, monospace;
+            font-family: cursive;
         }
+        
         .heart {
             margin-left: 10px;
         }
+        
         button {
             background-color: #ff4081;
             color: #fff;
@@ -40,19 +51,27 @@
             border-radius: 5px;
             margin-top: 20px;
         }
+        
         button:hover {
             background-color: #e91e63;
         }
+        
         @keyframes typingEffect {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
+        
         img {
             position: absolute;
             top: 10px;
             right: 10px;
             width: 50px;
         }
+        
         @media (max-width: 768px) {
             body {
                 font-size: 14px;
@@ -63,13 +82,14 @@
         }
     </style>
 </head>
+
 <body>
-    <img src="https://via.placeholder.com/50x50" alt="Love Icon" />
+    <img src="https://cdn.pixabay.com/photo/2018/08/03/04/36/couple-3581038_640.jpg" alt="Love Icon" />
     <div id="message">She: Why do you love me?</div>
     <button id="startButton">Click to see all the reasons ❤️</button>
     <div id="container"></div>
 
-    <audio id="backgroundMusic" src="your-music-file.mp3" autoplay loop></audio>
+    <audio id="backgroundMusic" src="ishq .mp3" autoplay loop></audio>
 
     <script>
         const reasons = [
@@ -121,16 +141,73 @@
             "You are my partner.",
             "You are my strength.",
             "You have always been my angel.",
-            "You always honest with me."
+            "You are always honest with me.",
+            "Your warm hugs brighten my day.",
+            "Your sense of style.",
+            "You are my sympathizer.",
+            "Your adventurous spirit.",
+            "You always have great ideas.",
+            "You are my inspiration.",
+            "Your selflessness.",
+            "You understand me.",
+            "You make me feel special.",
+            "Your positive attitude.",
+            "You are very caring.",
+            "You are my comfort.",
+            "Your smile is contagious.",
+            "You are my partner in everything.",
+            "Your laughter makes me happy.",
+            "You are my safe haven.",
+            "You are my favorite person to talk to.",
+            "You make me feel important.",
+            "Your loyalty means everything to me.",
+            "You are my best friend and lover.",
+            "You are my constant support.",
+            "You are always there for me.",
+            "Your thoughtfulness.",
+            "You make my heart skip a beat.",
+            "You are my everything.",
+            "Your encouragement.",
+            "You give your love and concern to everyone.",
+            "You have made life worth living.",
+            "You are the reason I smile.",
+            "You make me feel complete.",
+            "Your love is my strength.",
+            "You are my only true love.",
+            "You light up my life.",
+            "You bring me peace.",
+            "You care deeply for me.",
+            "You are my soulmate.",
+            "You inspire me to do better.",
+            "Your words uplift me.",
+            "You make every moment magical.",
+            "You are my dream come true.",
+            "You are my sunshine on a cloudy day.",
+            "Your love is unconditional.",
+            "You make me feel valued.",
+            "You are my everything and more.",
+            "You make my life extraordinary.",
+            "You are my greatest blessing.",
+            "You make the impossible feel possible.",
+            "You are my achhe karmo ka fal.",
+            "I LOVE YOU SO",
+            "SO SO SO SO SO SO",
+            "SO SO SO MUCH MY LOVE"
         ];
 
-        const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A8", "#A833FF", "#FF8C33", "#33FFD1"];
         const startButton = document.getElementById('startButton');
         const container = document.getElementById('container');
 
         startButton.addEventListener('click', () => {
-            startButton.style.display = 'none';
-            let delay = 0;
+            startButton.style.display = 'none'; // Hide button
+            let delay = 0; // Delay timer for animations
+            const colors = [
+                "#FF5733", "#33FF57", "#3357FF", "#FF33A8", "#A833FF",
+                "#FF8C33", "#33FFD1", "#FFC300", "#DAF7A6", "#E91E63",
+                "#4CAF50", "#03A9F4", "#FF9800", "#673AB7", "#CDDC39",
+                "#009688", "#FF5722", "#795548", "#607D8B", "#FF1493",
+                "#FFD700", "#8A2BE2", "#00FF7F", "#DC143C", "#00CED1"
+            ]; // Predefined heart colors (repeated if fewer than 100)
 
             reasons.forEach((reason, index) => {
                 const line = document.createElement('div');
@@ -140,13 +217,13 @@
 
                 const heart = document.createElement('span');
                 heart.classList.add('heart');
-                heart.style.color = colors[index % colors.length];
+                heart.style.color = colors[index % colors.length]; // Cycle through heart colors
                 heart.innerHTML = `❤️`;
 
                 line.innerHTML = `${index + 1}. ${reason}`;
                 line.appendChild(heart);
                 container.appendChild(line);
-                delay += .5;
+                delay += .5; // Add delay for each message
 
                 setTimeout(() => {
                     line.style.display = 'block';
@@ -154,5 +231,8 @@
             });
         });
     </script>
+
+
 </body>
+
 </html>
