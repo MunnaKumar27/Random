@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Messages</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #message {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .line {
+            display: none;
+            margin: 10px 0;
+        }
+        .heart {
+            margin-left: 10px;
+        }
+        button {
+            background-color: #ff4081;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #e91e63;
+        }
+        @keyframes typingEffect {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+        }
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://via.placeholder.com/50x50" alt="Love Icon" />
+    <div id="message">She: Why do you love me?</div>
+    <button id="startButton">Click to see all the reasons ❤️</button>
+    <div id="container"></div>
+
+    <audio id="backgroundMusic" src="your-music-file.mp3" autoplay loop></audio>
+
+    <script>
+        const reasons = [
+            "Your smile brightens my day.",
+            "You always know how to make me laugh.",
+            "Your kindness inspires me.",
+            "You listen to me with genuine interest.",
+            "You support my dreams.",
+            "Your eyes are the most beautiful.",
+            "You make me feel safe.",
+            "It's nice to see you.",
+            "You are incredibly thoughtful.",
+            "You bring out the best in me.",
+            "You are my best friend.",
+            "You accept me for who I am.",
+            "Your love for adventure.",
+            "The way you care for others.",
+            "Your creativity amazes me.",
+            "You make even the ordinary moments special.",
+            "Your sense of humor.",
+            "The way you look at me lovingly.",
+            "You are so patient.",
+            "You never give up on us.",
+            "You are my biggest cheerleader.",
+            "Your intelligence.",
+            "You're a great cook.",
+            "You are my confidant.",
+            "You surprise me in the best ways.",
+            "You're always willing to try new things.",
+            "Your optimism is contagious.",
+            "You are incredibly hard-working.",
+            "Your loyalty.",
+            "You make me feel appreciated.",
+            "Your laugh is contagious.",
+            "You make me a better person.",
+            "Your sense of adventure.",
+            "Whenever I am sad, your words support me.",
+            "Your passion for life.",
+            "The way you say I am for you.",
+            "You are an amazing dancer and singer.",
+            "Your generosity.",
+            "You respect me.",
+            "You are honest with me.",
+            "You are my support.",
+            "You make me feel pampered.",
+            "Your voice is magical.",
+            "You are my favorite person.",
+            "Your flexibility.",
+            "You are my partner.",
+            "You are my strength.",
+            "You have always been my angel.",
+            "You always honest with me."
+        ];
+
+        const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A8", "#A833FF", "#FF8C33", "#33FFD1"];
+        const startButton = document.getElementById('startButton');
+        const container = document.getElementById('container');
+
+        startButton.addEventListener('click', () => {
+            startButton.style.display = 'none';
+            let delay = 0;
+
+            reasons.forEach((reason, index) => {
+                const line = document.createElement('div');
+                line.classList.add('line');
+                line.style.animation = `typingEffect 1s forwards`;
+                line.style.animationDelay = `${delay}s`;
+
+                const heart = document.createElement('span');
+                heart.classList.add('heart');
+                heart.style.color = colors[index % colors.length];
+                heart.innerHTML = `❤️`;
+
+                line.innerHTML = `${index + 1}. ${reason}`;
+                line.appendChild(heart);
+                container.appendChild(line);
+                delay += .5;
+
+                setTimeout(() => {
+                    line.style.display = 'block';
+                }, delay * 1000);
+            });
+        });
+    </script>
+</body>
+</html>
